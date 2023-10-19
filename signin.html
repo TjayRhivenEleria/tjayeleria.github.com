@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in</title>
+  <style>
+    .body {
+      margin: 5rem 20rem 0rem 20rem;
+      /*top, right, bottom, left*/
+      padding: 10rem 20rem 15rem 20rem;
+      /*top, right, bottom, left*/
+      border-width: thin;
+      border-radius: 1.5rem;
+      box-shadow: rgb(75, 75, 78) 2px 4px 20px;
+      background-color: 240, 235, 216;
+    }
+
+    .tt {
+      display: flex;
+      margin: -7rem 0rem 0rem -17rem;
+      font-family: sans-serif;
+      text-transform: capitalize;
+      font-style: oblique;
+      color: 13, 19, 33;
+    }
+
+    .un {
+      margin: 1rem 0rem 4rem 0rem;
+      height: 2.5rem;
+      width: 20rem;
+      margin: 4rem 0rem 1rem -5rem;
+      display: flex;
+    }
+
+    .pw {
+      height: 2.5rem;
+      width: 20rem;
+      margin: 0rem 0rem 0rem -5rem;
+      display: flex;
+    }
+
+    .button1 {
+      padding: 15px 25px;
+      border: unset;
+      border-radius: 10px;
+      color: #212121;
+      z-index: 1;
+      background: #e8e8e8;
+      position: relative;
+      font-weight: 800;
+      font-size: 1.8rem;
+      -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+      box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+      transition: all 250ms;
+      overflow: hidden;
+      height: 3rem;
+      width: 20.5rem;
+      align-items: center;
+      display: flex;
+      place-content: center;
+      margin: 1.5rem 0rem 0rem -5rem;
+      cursor: pointer;
+    }
+
+    .button1::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      border-radius: 10px;
+      background-color: #212121;
+      z-index: -1;
+      -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+      box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+      transition: all 250ms
+    }
+
+    .button1:hover {
+      color: #e8e8e8;
+    }
+
+    .button1:hover::before {
+      width: 100%;
+    }
+
+    .ca {
+      margin: 2rem 0rem 0rem 8rem;
+      position: absolute;
+
+    }
+
+    .sp {
+      margin: 2rem 0rem 0rem -3rem;
+      position: absolute;
+    }
+
+    .wave-group {
+      position: relative;
+      margin: 5rem 0rem 0rem -5rem;
+    }
+
+    .wave-group .input {
+      font-size: 16px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 20rem;
+      border: none;
+      border-bottom: 1px solid #515151;
+      background: transparent;
+    }
+
+    .wave-group .input:focus {
+      outline: none;
+    }
+
+    .wave-group .label {
+      color: #999;
+      font-size: 18px;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      left: 5px;
+      top: 10px;
+      display: flex;
+    }
+
+    .wave-group .label-char {
+      transition: 0.2s ease all;
+      transition-delay: calc(var(--index) * .05s);
+    }
+
+    .wave-group .input:focus~label .label-char,
+    .wave-group .input:valid~label .label-char {
+      transform: translateY(-20px);
+      font-size: 14px;
+      color: #5264AE;
+    }
+
+    .wave-group .bar {
+      position: relative;
+      display: block;
+      width: 21rem;
+    }
+
+    .wave-group .bar:before,
+    .wave-group .bar:after {
+      content: '';
+      height: 2px;
+      width: 0;
+      bottom: 1px;
+      position: absolute;
+      background: #5264AE;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all;
+    }
+
+    .wave-group .bar:before {
+      left: 50%;
+    }
+
+    .wave-group .bar:after {
+      right: 50%;
+    }
+
+    .wave-group .input:focus~.bar:before,
+    .wave-group .input:focus~.bar:after {
+      width: 50%;
+    }
+
+
+    .wave-group2 {
+      position: relative;
+      margin: 1.5rem 0rem 0rem -5rem;
+    }
+
+    .wave-group2 .input2 {
+      font-size: 16px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 20rem;
+      border: none;
+      border-bottom: 1px solid #515151;
+      background: transparent;
+    }
+
+    .wave-group2 .input2:focus {
+      outline: none;
+    }
+
+    .wave-group2 .label2 {
+      color: #999;
+      font-size: 18px;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      left: 5px;
+      top: 10px;
+      display: flex;
+    }
+
+    .wave-group2 .label-char2 {
+      transition: 0.2s ease all;
+      transition-delay: calc(var(--index) * .05s);
+    }
+
+    .wave-group2 .input2:focus~label .label-char2,
+    .wave-group2 .input2:valid~label .label-char2 {
+      transform: translateY(-20px);
+      font-size: 14px;
+      color: #5264AE;
+    }
+
+    .wave-group2 .bar2 {
+      position: relative;
+      display: block;
+      width: 21rem;
+    }
+
+    .wave-group2 .bar2:before,
+    .wave-group2 .bar2:after {
+      content: '';
+      height: 2px;
+      width: 0;
+      bottom: 1px;
+      position: absolute;
+      background: #5264AE;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all;
+    }
+
+    .wave-group2 .bar2:before {
+      left: 50%;
+    }
+
+    .wave-group2 .bar2:after {
+      right: 50%;
+    }
+
+    .wave-group2 .input2:focus~.bar2:before,
+    .wave-group2 .input2:focus~.bar2:after {
+      width: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="body">
+    <h1 class="tt">Sign in here</h1>
+
+    <div class="wave-group">
+      <input required="" type="text" class="input">
+      <span class="bar"></span>
+      <label class="label">
+        <span class="label-char" style="--index: 0">U</span>
+        <span class="label-char" style="--index: 1">s</span>
+        <span class="label-char" style="--index: 2">e</span>
+        <span class="label-char" style="--index: 3">r</span>
+        <span class="label-char" style="--index: 3">n</span>
+        <span class="label-char" style="--index: 3">a</span>
+        <span class="label-char" style="--index: 3">m</span>
+        <span class="label-char" style="--index: 3">e</span>
+      </label>
+    </div>
+    <div class="wave-group2">
+      <input required="" type="text" class="input2">
+      <span class="bar2"></span>
+      <label class="label2">
+        <span class="label-char2" style="--index: 0">P</span>
+        <span class="label-char2" style="--index: 1">a</span>
+        <span class="label-char2" style="--index: 2">s</span>
+        <span class="label-char2" style="--index: 3">s</span>
+        <span class="label-char2" style="--index: 3">w</span>
+        <span class="label-char2" style="--index: 3">o</span>
+        <span class="label-char2" style="--index: 3">r</span>
+        <span class="label-char2" style="--index: 3">d</span>
+      </label>
+    </div>
+    <button class="button1">Sign in</button>
+    <a class="ca" href="#">Sign up</a><span class="sp">You dont have an account?</span>
+</body>
+</div>
+</html>
